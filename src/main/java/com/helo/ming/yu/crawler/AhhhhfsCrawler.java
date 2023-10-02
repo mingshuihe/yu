@@ -37,7 +37,7 @@ public class AhhhhfsCrawler {
         Elements eles = ele.select("div[class=col]");
         System.out.println(eles.outerHtml());
 
-        for(Element item:eles){
+        for (Element item : eles) {
             HaloBlog haloBlog = new HaloBlog();
             Element entryMedia = item.select("div[class^=entry-media]").get(0);
 
@@ -70,11 +70,7 @@ public class AhhhhfsCrawler {
             BlogCreateService blogCreateService = new BlogCreateService();
 
             blogCreateService.createAndPublish(haloBlog);
-            break;
         }
-
-
-
     }
 
     public String getTag(Element entryWrapper) {
