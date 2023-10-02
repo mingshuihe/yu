@@ -1,0 +1,36 @@
+{
+  "post": {
+    "spec": {
+      "title": "{{title}}",
+      "slug": "{{title-yin}}",
+      "template": "",
+      "cover": "{{cover-img}}",
+      "deleted": false,
+      "publish": false,
+      "pinned": false,
+      "allowComment": true,
+      "visible": "PUBLIC",
+      "priority": 0,
+      "excerpt": {
+        "autoGenerate": true,
+        "raw": ""
+      },
+      "categories": [],
+      "tags": [],
+      "htmlMetas": []
+    },
+    "apiVersion": "content.halo.run/v1alpha1",
+    "kind": "Post",
+    "metadata": {
+      "name": "{{name}}",
+      "annotations": {
+        "content.halo.run/preferred-editor": "default"
+      }
+    }
+  },
+  "content": {
+    "raw": "{{content}}",
+    "content": "{{content}}",
+    "rawType": "HTML"
+  }
+}
