@@ -1,0 +1,10 @@
+CREATE DATABASE yudb;
+
+SHOW VARIABLES LIKE 'character%';
+CREATE TABLE t1(id INT,NAME VARCHAR(20));
+SELECT * FROM t1;
+INSERT INTO t1(id,NAME) VALUES (1,'zhangsan');
+
+INSERT INTO t1(id,NAME) VALUES (2,'王五');
+
+SELECT * FROM extensions;
