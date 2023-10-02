@@ -69,7 +69,7 @@ public class AhhhhfsCrawler {
             System.out.println(JSON.toJSONString(haloBlog));
             BlogCreateService blogCreateService = new BlogCreateService();
 
-            blogCreateService.create(haloBlog);
+            blogCreateService.createAndPublish(haloBlog);
             break;
         }
 

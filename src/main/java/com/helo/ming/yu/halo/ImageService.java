@@ -15,7 +15,7 @@ public class ImageService {
 
     public String upload(File file) {
         Map<String, String> headrs = new HashMap<>();
-        headrs.put("Cookie", "XSRF-TOKEN=45ec5f3a-00ca-4df6-b2a5-a6d5197df026; SESSION=72d659f4-2aed-4d52-83a9-8a3ee8982396");
+        headrs.put("Cookie", "XSRF-TOKEN=45ec5f3a-00ca-4df6-b2a5-a6d5197df026; SESSION=eb46ba35-50be-4fe1-a01c-8e3dc28feb28");
         headrs.put("X-Xsrf-Token", "45ec5f3a-00ca-4df6-b2a5-a6d5197df026");
         String res = GoodHttpClient.uploadImage(url, file, headrs);
 

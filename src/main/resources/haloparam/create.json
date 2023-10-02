@@ -12,8 +12,8 @@
       "visible": "PUBLIC",
       "priority": 0,
       "excerpt": {
-        "autoGenerate": true,
-        "raw": ""
+        "autoGenerate": false,
+        "raw": "#excerpt#"
       },
       "categories": [],
       "tags": [],

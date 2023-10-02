@@ -1,5 +1,7 @@
 package com.helo.ming.yu.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import okhttp3.*;
 
 import java.io.File;
@@ -72,13 +74,27 @@ public class GoodHttpClient {
         return builder.build();
     }
 
-    public static String doPostJson(String url, String data,Map<String,String> headerMap) {
+    public static <T> T doPostJson(String url, String data,Map<String,String> headerMap,TypeReference<T> t) {
         headerMap.put("Content-Type","application/json");
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), data);
         Request request = new Request.Builder().post(requestBody).url(url).headers(getDefaultHeader(headerMap)).build();
         try {
             Response response = client.newCall(request).execute();
-            return response.body().string();
+            String s = response.body().string();
+            return JSON.parseObject(s,t);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static <T> T doPutJson(String url, String data,Map<String,String> headerMap,TypeReference<T> t) {
+        headerMap.put("Content-Type","application/json");
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), data);
+        Request request = new Request.Builder().put(requestBody).url(url).headers(getDefaultHeader(headerMap)).build();
+        try {
+            Response response = client.newCall(request).execute();
+            String s = response.body().string();
+            return JSON.parseObject(s,t);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
