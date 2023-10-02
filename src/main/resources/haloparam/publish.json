@@ -1,0 +1,77 @@
+{
+  "spec": {
+    "title": "#title#",
+    "slug": "#slug#",
+    "releaseSnapshot": "#releaseSnapshot#",
+    "headSnapshot": "#releaseSnapshot#",
+    "baseSnapshot": "#releaseSnapshot#",
+    "owner": "admin",
+    "template": "",
+    "cover": "#cover#",
+    "deleted": false,
+    "publish": true,
+    "publishTime": "2023-10-02T06:50:30.043082131Z",
+    "pinned": false,
+    "allowComment": true,
+    "visible": "PUBLIC",
+    "priority": 0,
+    "excerpt": {
+      "autoGenerate": false,
+      "raw": ""
+    },
+    "categories": [],
+    "tags": [],
+    "htmlMetas": []
+  },
+  "status": {
+    "phase": "PUBLISHED",
+    "conditions": [
+      {
+        "type": "PUBLISHED",
+        "status": "TRUE",
+        "lastTransitionTime": "2023-10-02T06:50:30.043072785Z",
+        "message": "Post published successfully.",
+        "reason": "Published"
+      },
+      {
+        "type": "DRAFT",
+        "status": "TRUE",
+        "lastTransitionTime": "2023-10-02T06:50:29.934531337Z",
+        "message": "Drafted post successfully.",
+        "reason": "DraftedSuccessfully"
+      }
+    ],
+    "permalink": "/archives/#slug#",
+    "excerpt": "#excerpt#",
+    "inProgress": false,
+    "contributors": [
+      "admin"
+    ],
+    "lastModifyTime": "2023-10-02T06:50:29.929718302Z"
+  },
+  "apiVersion": "content.halo.run/v1alpha1",
+  "kind": "Post",
+  "metadata": {
+    "finalizers": [
+      "post-protection"
+    ],
+    "name": "#name#",
+    "labels": {
+      "content.halo.run/archive-year": "2023",
+      "content.halo.run/archive-day": "02",
+      "content.halo.run/archive-month": "10",
+      "content.halo.run/published": "true",
+      "content.halo.run/deleted": "false",
+      "content.halo.run/owner": "admin",
+      "content.halo.run/visible": "PUBLIC"
+    },
+    "annotations": {
+      "content.halo.run/preferred-editor": "default",
+      "checksum/config": "e3b1d01efe6f1286e688ee322b22d44b47d6fcf11faf430cfc80f37feff606d5",
+      "content.halo.run/last-released-snapshot": "#releaseSnapshot#",
+      "content.halo.run/permalink-pattern": "/archives/{slug}"
+    },
+    "version": 4,
+    "creationTimestamp": "2023-10-02T06:50:29.880791673Z"
+  }
+}

@@ -1,10 +1,10 @@
 {
   "post": {
     "spec": {
-      "title": "{{title}}",
-      "slug": "{{title-yin}}",
+      "title": "#title#",
+      "slug": "#slug#",
       "template": "",
-      "cover": "{{cover-img}}",
+      "cover": "#cover#",
       "deleted": false,
       "publish": false,
       "pinned": false,
@@ -22,15 +22,15 @@
     "apiVersion": "content.halo.run/v1alpha1",
     "kind": "Post",
     "metadata": {
-      "name": "{{name}}",
+      "name": "#name#",
       "annotations": {
         "content.halo.run/preferred-editor": "default"
       }
     }
   },
   "content": {
-    "raw": "{{content}}",
-    "content": "{{content}}",
+    "raw": "#content#",
+    "content": "#content#",
     "rawType": "HTML"
   }
 }

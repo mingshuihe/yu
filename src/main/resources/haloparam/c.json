@@ -1,0 +1,36 @@
+{
+  "post": {
+    "spec": {
+      "title": "是啥",
+      "slug": "shi-sha",
+      "template": "",
+      "cover": "/upload/3.png",
+      "deleted": false,
+      "publish": false,
+      "pinned": false,
+      "allowComment": true,
+      "visible": "PUBLIC",
+      "priority": 0,
+      "excerpt": {
+        "autoGenerate": true,
+        "raw": ""
+      },
+      "categories": [],
+      "tags": [],
+      "htmlMetas": []
+    },
+    "apiVersion": "content.halo.run/v1alpha1",
+    "kind": "Post",
+    "metadata": {
+      "name": "f9a192d7-3f46-4231-97cf-964732799941",
+      "annotations": {
+        "content.halo.run/preferred-editor": "default"
+      }
+    }
+  },
+  "content": {
+    "raw": "<h2 id=\"heading-1\">标题1</h2><p>内容1</p><p>内容22222222222222222222222222222222222222222222222222222222222222222222222222</p><p><img loading=\"lazy\" src=\"/upload/深圳各区美食推荐-区域-scaled.webp\" alt=\"深圳各区美食推荐-区域-scaled.webp\" width=\"794.375px\" height=\"507.5625px\" style=\"display: inline-block\">文字1111111111</p><h2 id=\"heading-2\"><img loading=\"lazy\" src=\"/upload/深圳各区美食推荐-scaled.webp\" alt=\"深圳各区美食推荐-scaled.webp\" width=\"50%\" height=\"auto\" style=\"display: inline-block\">标题2</h2><p></p><p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p><p>地址:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://192.168.61.130:8090/console/posts/editor\">http://192.168.61.130:8090/console/posts/editor</a></p><p></p>",
+    "content": "<h2 id=\"heading-1\">标题1</h2><p>内容1</p><p>内容22222222222222222222222222222222222222222222222222222222222222222222222222</p><p><img loading=\"lazy\" src=\"/upload/深圳各区美食推荐-区域-scaled.webp\" alt=\"深圳各区美食推荐-区域-scaled.webp\" width=\"794.375px\" height=\"507.5625px\" style=\"display: inline-block\">文字1111111111</p><h2 id=\"heading-2\"><img loading=\"lazy\" src=\"/upload/深圳各区美食推荐-scaled.webp\" alt=\"深圳各区美食推荐-scaled.webp\" width=\"50%\" height=\"auto\" style=\"display: inline-block\">标题2</h2><p></p><p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p><p>地址:<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://192.168.61.130:8090/console/posts/editor\">http://192.168.61.130:8090/console/posts/editor</a></p><p></p>",
+    "rawType": "HTML"
+  }
+}

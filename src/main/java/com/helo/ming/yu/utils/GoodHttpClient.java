@@ -72,4 +72,16 @@ public class GoodHttpClient {
         return builder.build();
     }
 
+    public static String doPostJson(String url, String data,Map<String,String> headerMap) {
+        headerMap.put("Content-Type","application/json");
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), data);
+        Request request = new Request.Builder().post(requestBody).url(url).headers(getDefaultHeader(headerMap)).build();
+        try {
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
