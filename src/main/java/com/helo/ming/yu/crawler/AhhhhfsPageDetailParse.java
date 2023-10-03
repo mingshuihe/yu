@@ -6,8 +6,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AhhhhfsPageDetailParse {
+
+    @Autowired
+    private ImageService imageService;
 
     public String execute(String url) {
         String page = GoodHttpClient.get(url);
@@ -30,7 +36,7 @@ public class AhhhhfsPageDetailParse {
                 }
                 continue;
             }
-            atagUrl = convertToMyImage(atagUrl);
+            atagUrl = imageService.upload(atagUrl);
             aTag.remove();
             e.insertChildren(0, getImgElement(atagUrl));
         }
@@ -40,11 +46,6 @@ public class AhhhhfsPageDetailParse {
         content = content.replaceAll("\n ", "");
         content = content.replaceAll("\n", "");
         return content;
-    }
-
-    public String convertToMyImage(String atagUrl) {
-        ImageService imageService = new ImageService();
-        return imageService.upload(atagUrl);
     }
 
     public Element getImgElement(String url) {
