@@ -67,7 +67,7 @@
     },
     "annotations": {
       "content.halo.run/preferred-editor": "default",
-      "checksum/config": "e3b1d01efe6f1286e688ee322b22d44b47d6fcf11faf430cfc80f37feff606d5",
+      "checksum/config": "#checksum#",
       "content.halo.run/last-released-snapshot": "#releaseSnapshot#",
       "content.halo.run/permalink-pattern": "/archives/{slug}"
     },

@@ -47,6 +47,7 @@ public class BlogCreateService extends HaloBaseService{
             body = body.replaceAll("#excerpt#",blog.getExcerpt());
             body = body.replaceAll("#releaseSnapshot#",res.getSpec().getBaseSnapshot());
             body = body.replaceAll("#name#",blog.getName());
+            body = body.replaceAll("#checksum#",blog.getCheckSum());
             publishUrl = String.format(publishUrl,blog.getName());
             // 这里只是发布
             String result = GoodHttpClient.doPutJson(HALO_HOST+publishUrl, body,headrs, new TypeReference<String>(){});

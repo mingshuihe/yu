@@ -5,6 +5,7 @@ import com.helo.ming.yu.halo.ImageService;
 import com.helo.ming.yu.model.HaloBlog;
 import com.helo.ming.yu.service.HeloService;
 import com.helo.ming.yu.utils.GoodHttpClient;
+import com.helo.ming.yu.utils.MD5Util;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -76,7 +77,7 @@ public class AhhhhfsCrawler {
 
             String content = ahhhhfsPageDetailParse.execute(detailUrl);
             haloBlog.setContent(content); //正文内容
-
+            haloBlog.setCheckSum(MD5Util.getMd5Str(title+"$"+content));// 根据标题和内容计算md5
             String uuid = UUID.randomUUID().toString();
             haloBlog.setName(uuid);
             haloBlog.setSlug(uuid);
