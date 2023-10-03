@@ -24,6 +24,9 @@ public class AhhhhfsCrawler {
     private HeloService heloService;
 
     @Autowired
+    private ImageService imageService;
+
+    @Autowired
     private BlogCreateService blogCreateService;
     @Autowired
     private AhhhhfsPageDetailParse ahhhhfsPageDetailParse;
@@ -140,7 +143,6 @@ public class AhhhhfsCrawler {
     public String getCover(Element entryMedia) {
         Element atag = entryMedia.select("a").get(0);
         String dataBgUrl = atag.attr("data-bg");
-        ImageService imageService = new ImageService();
         return imageService.upload(dataBgUrl);
     }
 
