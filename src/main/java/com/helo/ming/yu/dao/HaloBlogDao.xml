@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.helo.ming.yu.dao.HaloBlogDao">
+
+    <select id="findByCheckSum"  resultType="com.helo.ming.yu.model.HaloBlog">
+        select * from halo_blog where check_sum=#{param1};
+    </select>
+
+    <insert id="save">
+        insert into halo_blog
+        (
+            title
+            slug,
+            cover,
+            name,
+            content,
+            excerpt,
+            tag,
+            page_url,
+            check_sum)
+        values (
+            #{title},
+            #{slug},
+            #{cover},
+            #{name},
+            #{content},
+            #{excerpt},
+            #{tag},
+            #{pageUrl},
+            #{checkSum}
+        )
+    </insert>
+
+</mapper>

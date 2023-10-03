@@ -15,4 +15,5 @@ public class HaloBlog {
     private String tag;
     private Date createDate;
     private String pageUrl;
+    private String checkSum;
 }
