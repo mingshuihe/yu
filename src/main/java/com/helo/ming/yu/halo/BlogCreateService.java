@@ -5,12 +5,14 @@ import com.helo.ming.yu.halo.dto.HaloCreateResult;
 import com.helo.ming.yu.model.HaloBlog;
 import com.helo.ming.yu.utils.GoodHttpClient;
 import org.apache.commons.io.FileUtils;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class BlogCreateService extends HaloBaseService{
 
     String createUrl = "/apis/api.console.halo.run/v1alpha1/posts";

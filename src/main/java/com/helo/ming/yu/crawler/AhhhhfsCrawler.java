@@ -22,8 +22,11 @@ public class AhhhhfsCrawler {
 
     @Autowired
     private HeloService heloService;
+
     @Autowired
-    AhhhhfsPageDetailParse ahhhhfsPageDetailParse;
+    private BlogCreateService blogCreateService;
+    @Autowired
+    private AhhhhfsPageDetailParse ahhhhfsPageDetailParse;
     String url = "https://www.ahhhhfs.com/page/";
 
     public void execute() {
@@ -77,12 +80,17 @@ public class AhhhhfsCrawler {
 
             String content = ahhhhfsPageDetailParse.execute(detailUrl);
             haloBlog.setContent(content); //正文内容
-            haloBlog.setCheckSum(MD5Util.getMd5Str(title+"$"+content));// 根据标题和内容计算md5
+
+            String checkSum = MD5Util.getMd5Str(title+"$"+content);
+            haloBlog.setCheckSum(MD5Util.getMd5Str(checkSum));// 根据标题和内容计算md5
+            HaloBlog blog = heloService.findByCheckSum(checkSum);
+            if(blog == null){
+                return;
+            }
+
             String uuid = UUID.randomUUID().toString();
             haloBlog.setName(uuid);
             haloBlog.setSlug(uuid);
-
-            BlogCreateService blogCreateService = new BlogCreateService();
 
             blogCreateService.createAndPublish(haloBlog);
 
