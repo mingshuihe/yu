@@ -42,20 +42,24 @@ public class AhhhhfsCrawler {
                 break;
             }
             Document doc = Jsoup.parse(page);
-            parsePage(doc);
+            parsePage(doc,startPage);
             startPage++;
         }
     }
 
-    public void parsePage(Document doc) {
+    public void parsePage(Document doc,int startPage) {
         Element ele = doc.select("#ri_home_lastpost_widget-2").get(0);
         ele = ele.select("#ri_home_lastpost_widget-2").get(0);
         ele = ele.select("div > section > div").get(1);
         Elements eles = ele.select("div[class=col]");
 
-        for (Element item : eles) {
+        for(int i=0;i<eles.size();i++){
+            System.out.println("*************************第"+startPage+"轮第"+i+"次开始***************************************");
+            Element item = eles.get(i);
             parseAndCreate(item);
+            System.out.println("*************************第"+startPage+"轮第"+i+"次结束***************************************");
         }
+
     }
 
     public void parseAndCreate(Element item) {
