@@ -18,7 +18,12 @@
             excerpt,
             tag,
             page_url,
-            check_sum)
+            check_sum,
+            create_status,
+            publish_status,
+            has_error,
+            error_msg
+        )
         values (
             #{title},
             #{slug},
@@ -28,8 +33,12 @@
             #{excerpt},
             #{tag},
             #{pageUrl},
-            #{checkSum}
-        )
+            #{checkSum},
+            #{createStatus},
+            #{publishStatus},
+            #{hasError},
+            #{errorMsg}
+         )
     </insert>
 
 </mapper>

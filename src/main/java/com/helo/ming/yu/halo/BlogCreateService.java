@@ -33,7 +33,10 @@ public class BlogCreateService extends HaloBaseService{
             Map<String, String> headrs = new HashMap<>();
             headrs.put("Cookie", COOKIE);
             headrs.put("X-Xsrf-Token", XSRF);
+            // 这里只是保存,并未发布
             HaloCreateResult res = GoodHttpClient.doPostJson(HALO_HOST+createUrl, body,headrs, new TypeReference<HaloCreateResult>(){});
+
+            blog.setCreateStatus("success");
 
             //File pfile = new File("D:\\DEV\\ideaproject\\yu\\src\\main\\resources\\haloparam\\publish.json");
             File pfile = ResourceUtils.getFile("classpath:haloparam\\publish.json");
@@ -45,7 +48,9 @@ public class BlogCreateService extends HaloBaseService{
             body = body.replaceAll("#releaseSnapshot#",res.getSpec().getBaseSnapshot());
             body = body.replaceAll("#name#",blog.getName());
             publishUrl = String.format(publishUrl,blog.getName());
+            // 这里只是发布
             String result = GoodHttpClient.doPutJson(HALO_HOST+publishUrl, body,headrs, new TypeReference<String>(){});
+            blog.setPublishStatus("success");
             return result;
         }catch (Exception e){
             throw new RuntimeException(e);

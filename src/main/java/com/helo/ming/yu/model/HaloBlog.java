@@ -16,4 +16,9 @@ public class HaloBlog {
     private Date createDate;
     private String pageUrl;
     private String checkSum;
+
+    private String createStatus;
+    private String publishStatus;
+    private String hasError;
+    private String errorMsg;
 }

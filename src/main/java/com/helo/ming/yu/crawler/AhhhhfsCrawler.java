@@ -3,6 +3,7 @@ package com.helo.ming.yu.crawler;
 import com.helo.ming.yu.halo.BlogCreateService;
 import com.helo.ming.yu.halo.ImageService;
 import com.helo.ming.yu.model.HaloBlog;
+import com.helo.ming.yu.service.HeloService;
 import com.helo.ming.yu.utils.GoodHttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,6 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +19,8 @@ import java.util.UUID;
 @Component
 public class AhhhhfsCrawler {
 
+    @Autowired
+    private HeloService heloService;
     @Autowired
     AhhhhfsPageDetailParse ahhhhfsPageDetailParse;
     String url = "https://www.ahhhhfs.com/page/";
@@ -39,10 +43,18 @@ public class AhhhhfsCrawler {
         ele = ele.select("#ri_home_lastpost_widget-2").get(0);
         ele = ele.select("div > section > div").get(1);
         Elements eles = ele.select("div[class=col]");
-        System.out.println(eles.outerHtml());
 
         for (Element item : eles) {
-            HaloBlog haloBlog = new HaloBlog();
+            parseAndCreate(item);
+        }
+    }
+
+    public void parseAndCreate(Element item) {
+        HaloBlog haloBlog = new HaloBlog();
+        haloBlog.setCreateStatus("fail");
+        haloBlog.setPublishStatus("fail");
+        haloBlog.setHasError("no");
+        try {
             Element entryMedia = item.select("div[class^=entry-media]").get(0);
 
             String cover = getCover(entryMedia);
@@ -72,8 +84,15 @@ public class AhhhhfsCrawler {
             BlogCreateService blogCreateService = new BlogCreateService();
 
             blogCreateService.createAndPublish(haloBlog);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            haloBlog.setHasError("yes");
+            haloBlog.setErrorMsg(e.getMessage());
         }
+        heloService.save(haloBlog);
     }
+
 
     public String getTag(Element entryWrapper) {
         Element entryCatDot = entryWrapper.select("div[class=entry-cat-dot]").get(0);
@@ -117,8 +136,9 @@ public class AhhhhfsCrawler {
     }
 
     public static void main(String[] args) {
-        AhhhhfsCrawler ahhhhfsCrawler = new AhhhhfsCrawler();
-        ahhhhfsCrawler.execute();
+       AhhhhfsCrawler ahhhhfsCrawler = new AhhhhfsCrawler();
+       ahhhhfsCrawler.execute();
+
     }
 
 }
