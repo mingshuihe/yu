@@ -1,6 +1,5 @@
 package com.helo.ming.yu.crawler;
 
-import com.alibaba.fastjson.JSON;
 import com.helo.ming.yu.halo.BlogCreateService;
 import com.helo.ming.yu.halo.ImageService;
 import com.helo.ming.yu.model.HaloBlog;
@@ -9,12 +8,17 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class AhhhhfsCrawler {
+
+    @Autowired
+    AhhhhfsPageDetailParse ahhhhfsPageDetailParse;
     String url = "https://www.ahhhhfs.com/page/";
 
     public void execute() {
@@ -52,21 +56,19 @@ public class AhhhhfsCrawler {
             String title = getTitle(entryWrapper);
             haloBlog.setTitle(title);//文章标题
 
-            String url = getPageUrl(entryWrapper);
-            haloBlog.setPageUrl(url);//文章对应的链接
+            String detailUrl = getPageUrl(entryWrapper);
+            haloBlog.setPageUrl(detailUrl);//文章对应的链接
 
             String excerpt = getExcerpt(entryWrapper);
             haloBlog.setExcerpt(excerpt);//文章摘要
 
-            AhhhhfsPageDetailParse pageDetailParse = new AhhhhfsPageDetailParse();
-            String content = pageDetailParse.execute(url);
+            String content = ahhhhfsPageDetailParse.execute(detailUrl);
             haloBlog.setContent(content); //正文内容
 
             String uuid = UUID.randomUUID().toString();
             haloBlog.setName(uuid);
             haloBlog.setSlug(uuid);
 
-            System.out.println(JSON.toJSONString(haloBlog));
             BlogCreateService blogCreateService = new BlogCreateService();
 
             blogCreateService.createAndPublish(haloBlog);
