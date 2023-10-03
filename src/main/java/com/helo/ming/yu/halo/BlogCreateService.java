@@ -17,7 +17,7 @@ public class BlogCreateService extends HaloBaseService{
 
     String createUrl = "/apis/api.console.halo.run/v1alpha1/posts";
 
-    String publishUrl = "/apis/api.console.halo.run/v1alpha1/posts/%s/publish";
+    String basePublishUrl = "/apis/api.console.halo.run/v1alpha1/posts/%s/publish";
 
     public void createAndPublish(HaloBlog blog) {
         try {
@@ -52,7 +52,7 @@ public class BlogCreateService extends HaloBaseService{
             body = body.replaceAll("#releaseSnapshot#",res.getSpec().getBaseSnapshot());
             body = body.replaceAll("#name#",blog.getName());
             body = body.replaceAll("#checksum#",blog.getCheckSum());
-            publishUrl = String.format(publishUrl,blog.getName());
+            String publishUrl = String.format(basePublishUrl,blog.getName());
             // 这里只是发布
             String result = GoodHttpClient.doPutJson(HALO_HOST+publishUrl, body,headrs, new TypeReference<String>(){});
             blog.setPublishStatus("success");

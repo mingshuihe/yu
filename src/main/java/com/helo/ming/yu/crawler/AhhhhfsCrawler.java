@@ -37,11 +37,13 @@ public class AhhhhfsCrawler {
         while (true) {
             String reqUrl = url + startPage;
             String page = GoodHttpClient.get(reqUrl);
+            // 到了结尾
+            if (page.contains("发布的内容不见了怎么办")) {
+                break;
+            }
             Document doc = Jsoup.parse(page);
             parsePage(doc);
             startPage++;
-            System.out.println(page);
-            break;
         }
     }
 
@@ -84,10 +86,10 @@ public class AhhhhfsCrawler {
             String content = ahhhhfsPageDetailParse.execute(detailUrl);
             haloBlog.setContent(content); //正文内容
 
-            String checkSum = MD5Util.getMd5Str(title+"$"+content);
+            String checkSum = MD5Util.getMd5Str(title + "$" + content);
             haloBlog.setCheckSum(MD5Util.getMd5Str(checkSum));// 根据标题和内容计算md5
             HaloBlog blog = heloService.findByCheckSum(checkSum);
-            if(blog != null){
+            if (blog != null) {
                 return;
             }
 
@@ -97,7 +99,7 @@ public class AhhhhfsCrawler {
 
             blogCreateService.createAndPublish(haloBlog);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             haloBlog.setHasError("yes");
             haloBlog.setErrorMsg(e.getMessage());
@@ -147,8 +149,8 @@ public class AhhhhfsCrawler {
     }
 
     public static void main(String[] args) {
-       AhhhhfsCrawler ahhhhfsCrawler = new AhhhhfsCrawler();
-       ahhhhfsCrawler.execute();
+        AhhhhfsCrawler ahhhhfsCrawler = new AhhhhfsCrawler();
+        ahhhhfsCrawler.execute();
 
     }
 
