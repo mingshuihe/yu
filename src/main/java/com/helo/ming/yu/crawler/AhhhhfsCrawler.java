@@ -84,7 +84,7 @@ public class AhhhhfsCrawler {
             String checkSum = MD5Util.getMd5Str(title+"$"+content);
             haloBlog.setCheckSum(MD5Util.getMd5Str(checkSum));// 根据标题和内容计算md5
             HaloBlog blog = heloService.findByCheckSum(checkSum);
-            if(blog == null){
+            if(blog != null){
                 return;
             }
 

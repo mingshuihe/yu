@@ -10,7 +10,7 @@
     <insert id="save">
         insert into halo_blog
         (
-            title
+            title,
             slug,
             cover,
             name,

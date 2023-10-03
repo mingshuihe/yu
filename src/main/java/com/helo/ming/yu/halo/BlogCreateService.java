@@ -19,7 +19,7 @@ public class BlogCreateService extends HaloBaseService{
 
     String publishUrl = "/apis/api.console.halo.run/v1alpha1/posts/%s/publish";
 
-    public String createAndPublish(HaloBlog blog) {
+    public void createAndPublish(HaloBlog blog) {
         try {
             //File file = new File("D:\\DEV\\ideaproject\\yu\\src\\main\\resources\\haloparam\\create.json");
             File file = ResourceUtils.getFile("classpath:haloparam\\create.json");
@@ -37,7 +37,9 @@ public class BlogCreateService extends HaloBaseService{
             headrs.put("X-Xsrf-Token", XSRF);
             // 这里只是保存,并未发布
             HaloCreateResult res = GoodHttpClient.doPostJson(HALO_HOST+createUrl, body,headrs, new TypeReference<HaloCreateResult>(){});
-
+            if(res == null || res.getSpec() == null){
+                return ;
+            }
             blog.setCreateStatus("success");
 
             //File pfile = new File("D:\\DEV\\ideaproject\\yu\\src\\main\\resources\\haloparam\\publish.json");
@@ -54,7 +56,7 @@ public class BlogCreateService extends HaloBaseService{
             // 这里只是发布
             String result = GoodHttpClient.doPutJson(HALO_HOST+publishUrl, body,headrs, new TypeReference<String>(){});
             blog.setPublishStatus("success");
-            return result;
+
         }catch (Exception e){
             throw new RuntimeException(e);
         }

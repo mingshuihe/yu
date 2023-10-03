@@ -80,6 +80,9 @@ public class GoodHttpClient {
         Request request = new Request.Builder().post(requestBody).url(url).headers(getDefaultHeader(headerMap)).build();
         try {
             Response response = client.newCall(request).execute();
+            if(response.code() !=200){
+                throw new RuntimeException(response.message());
+            }
             String s = response.body().string();
             return JSON.parseObject(s,t);
         } catch (Exception e) {
