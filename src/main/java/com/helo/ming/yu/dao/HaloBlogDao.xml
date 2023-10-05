@@ -4,7 +4,27 @@
 <mapper namespace="com.helo.ming.yu.dao.HaloBlogDao">
 
     <select id="findByCheckSum"  resultType="com.helo.ming.yu.model.HaloBlog">
-        select * from halo_blog where check_sum=#{param1};
+        select * from halo_blog where check_sum=#{param1}
+    </select>
+
+    <select id="findAll"  resultType="com.helo.ming.yu.model.HaloBlog">
+        select
+            id,
+            title,
+            slug,
+            cover,
+            NAME,
+            content,
+            excerpt,
+            tag,
+            page_url pageUrl,
+            check_sum checkSum,
+            create_status createStatus,
+            publish_status publishStatus,
+            has_error hasError,
+            error_msg errorMsg,
+            create_date createDate
+        from halo_blog order by create_date asc
     </select>
 
     <insert id="save">

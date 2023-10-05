@@ -19,14 +19,14 @@ public class ImageService  extends HaloBaseService{
         Map<String, String> headrs = new HashMap<>();
         headrs.put("Cookie", COOKIE);
         headrs.put("X-Xsrf-Token", XSRF);
-         GoodHttpClient.uploadImage(HALO_HOST+url, file, headrs);
+        GoodHttpClient.uploadImage(HALO_HOST+url, file, headrs);
         return "/upload/"+file.getName();
     }
 
     public String upload(String sourceUrl) {
         try {
             InputStream in = GoodHttpClient.getImage(sourceUrl);
-            String fileName = "C:\\Users\\mingdong\\Desktop\\apic\\" + UUID.randomUUID() + ".jpg";
+            String fileName = IMG_DIR + UUID.randomUUID() + ".jpg";
             File file = new File(fileName);
             FileUtils.copyInputStreamToFile(in, file);
             return upload(file);

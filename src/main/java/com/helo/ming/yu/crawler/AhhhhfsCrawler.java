@@ -35,15 +35,19 @@ public class AhhhhfsCrawler {
     public void execute() {
         int startPage = 1;
         while (true) {
-            String reqUrl = url + startPage;
-            String page = GoodHttpClient.get(reqUrl);
-            // 到了结尾
-            if (page.contains("发布的内容不见了怎么办")) {
-                break;
+            try {
+                String reqUrl = url + startPage;
+                String page = GoodHttpClient.get(reqUrl);
+                // 到了结尾
+                if (page.contains("发布的内容不见了怎么办")) {
+                    break;
+                }
+                Document doc = Jsoup.parse(page);
+                parsePage(doc, startPage);
+                startPage++;
+            }catch (Exception e){
+                e.printStackTrace();
             }
-            Document doc = Jsoup.parse(page);
-            parsePage(doc,startPage);
-            startPage++;
         }
     }
 
@@ -108,7 +112,11 @@ public class AhhhhfsCrawler {
             haloBlog.setHasError("yes");
             haloBlog.setErrorMsg(e.getMessage());
         }
-        heloService.save(haloBlog);
+        try {
+            heloService.save(haloBlog);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -49,6 +49,9 @@ public class GoodHttpClient {
                 .build();
         try {
             Response response = client.newCall(request).execute();
+            if(response.code() !=200){
+                throw new RuntimeException(response.message());
+            }
             return response.body().string();
         } catch (Exception e) {
             throw new RuntimeException(e);

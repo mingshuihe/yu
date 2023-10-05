@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Data
 public class HaloBlog {
+    private Integer id;
     private String title; //是啥
     private String slug; //shi-sha",
     private String cover; ///upload/3.png",

@@ -5,6 +5,8 @@ import com.helo.ming.yu.model.HaloBlog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HeloService {
     @Autowired
@@ -16,5 +18,9 @@ public class HeloService {
 
     public void save(HaloBlog blog) {
         haloBlogDao.save(blog);
+    }
+
+    public List<HaloBlog> findAll() {
+        return haloBlogDao.findAll();
     }
 }
