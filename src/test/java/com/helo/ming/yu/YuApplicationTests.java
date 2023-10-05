@@ -16,7 +16,7 @@ class YuApplicationTests {
 	private BatchCreateHaloBlogFromDataBaseService batchCreateService;
 	@Test
 	void createFromAh() {
-		//ahhhhfsCrawler.execute();
+		ahhhhfsCrawler.execute();
 	}
 
 	@Test
